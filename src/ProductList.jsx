@@ -9,7 +9,7 @@ function ProductList() {
     const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-    const [addedToCart, setAddedToCart] = useState({});
+    const [addedToCart, setAddedToCart] = useState([]);
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -237,20 +237,20 @@ function ProductList() {
     fontSize: '30px',
     textDecoration: 'none',
    }
-   const handleCartClick = (e) => {
-    e.preventDefault();
-    setShowCart(true); // Set showCart to true when cart icon is clicked
-};
-const handlePlantsClick = (e) => {
-    e.preventDefault();
-    setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-    setShowCart(false); // Hide the cart when navigating to About Us
-};
+    const handleCartClick = (e) => {
+        e.preventDefault();
+        setShowCart(true); // Set showCart to true when cart icon is clicked
+    };
+    const handlePlantsClick = (e) => {
+        e.preventDefault();
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
+        setShowCart(false); // Hide the cart when navigating to About Us
+    };
 
    const handleContinueShopping = (e) => {
-    e.preventDefault();
-    setShowCart(false);
-  };
+        e.preventDefault();
+        setShowCart(false);
+    };
     const handleAddToCart = (plant) => {
         dispatch(addItem(plant));
         setAddedToCart([...addedToCart, plant]);
